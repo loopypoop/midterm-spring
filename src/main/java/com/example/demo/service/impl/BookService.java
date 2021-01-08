@@ -1,6 +1,8 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.model.Author;
 import com.example.demo.model.Book;
+import com.example.demo.repository.AuthorRepository;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +15,13 @@ public class BookService implements IBookService {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private AuthorRepository authorRepository;
+
     @Override
     public Book addBook(Book book) {
+        Author author = authorRepository.getById(book.getAuthorId());
+        book.setAuthor(author);
         return bookRepository.save(book);
     }
 
