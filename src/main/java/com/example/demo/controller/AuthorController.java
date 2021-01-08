@@ -5,6 +5,8 @@ import com.example.demo.service.IAuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("author")
 public class AuthorController {
@@ -20,6 +22,11 @@ public class AuthorController {
     @RequestMapping(value = "/getById/{id}", method = RequestMethod.GET, produces = "application/json")
     public Author getById(@PathVariable("id") Integer id) {
         return iAuthorService.getById(id);
+    }
+
+    @RequestMapping(value = "/getAllAuthors", method = RequestMethod.GET, produces = "application/json")
+    public List<Author> getAllAuthors() {
+        return iAuthorService.getAllAuthors();
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json")
