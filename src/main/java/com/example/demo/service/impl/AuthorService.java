@@ -21,4 +21,14 @@ public class AuthorService implements IAuthorService {
     public Author getById(Integer id) {
         return authorRepository.getById(id);
     }
+
+    @Override
+    public Author update(Author author) {
+        return authorRepository.save(author);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        authorRepository.deleteById(id);
+    }
 }

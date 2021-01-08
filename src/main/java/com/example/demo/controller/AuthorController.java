@@ -22,4 +22,13 @@ public class AuthorController {
         return iAuthorService.getById(id);
     }
 
+    @RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json")
+    public Author updateAuthor(@RequestBody Author author) {
+        return iAuthorService.update(author);
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = "application/json")
+    public void deleteAuthor(@PathVariable("id") Integer id) {
+        iAuthorService.delete(id);
+    }
 }
