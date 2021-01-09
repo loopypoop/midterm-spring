@@ -41,7 +41,7 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public List<Book> getAllBooksByAuthorId(Integer id) {
+    public List<Book> getBooksByAuthorId(Integer id) {
         return bookRepository.getAllByAuthorId(id);
     }
 

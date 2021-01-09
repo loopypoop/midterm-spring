@@ -36,7 +36,6 @@ public class BookController {
 
     @RequestMapping(value = "/getBooksByAuthorId", method = RequestMethod.GET, produces = "application/json")
     public List<Book> getBooksByAuthorId(@RequestParam Integer authorId) {
-        return ibookService.getAllBooksByAuthorId(authorId);
+        return ibookService.getBooksByAuthorId(authorId);
     }
-
 }
