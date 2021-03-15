@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.model.Author;
 import com.example.demo.model.Book;
+import com.example.demo.model.User;
 import com.example.demo.repository.AuthorRepository;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.service.IBookService;
@@ -43,6 +44,28 @@ public class BookService implements IBookService {
     @Override
     public List<Book> getBooksByAuthorId(Integer id) {
         return bookRepository.getAllByAuthorId(id);
+    }
+
+    @Override
+    public List<Book> getBooksByUserId(Integer id) {
+        return bookRepository.getAllByUserId(id);
+    }
+
+    @Override
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
+    }
+
+    @Override
+    public Author getAuthorByBookId(Integer id) {
+        Book book = bookRepository.getById(id);
+        return book.getAuthor();
+    }
+
+    @Override
+    public User getUserByBookId(Integer id) {
+        Book book = bookRepository.getById(id);
+        return book.getUser();
     }
 
 
