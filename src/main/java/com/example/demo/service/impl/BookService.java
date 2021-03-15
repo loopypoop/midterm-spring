@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.events.BookUpdateEvent;
 import com.example.demo.model.Author;
 import com.example.demo.model.Book;
 import com.example.demo.model.User;
@@ -7,6 +8,7 @@ import com.example.demo.repository.AuthorRepository;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,8 @@ public class BookService implements IBookService {
 
     @Autowired
     private AuthorRepository authorRepository;
+
+    private ApplicationEventPublisher eventPublisher;
 
     @Override
     public Book addBook(Book book) {
@@ -38,6 +42,7 @@ public class BookService implements IBookService {
 
     @Override
     public Book updateBook(Book book) {
+        this.eventPublisher.publishEvent(new BookUpdateEvent(this, book));
         return bookRepository.save(book);
     }
 
