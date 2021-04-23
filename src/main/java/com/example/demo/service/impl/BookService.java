@@ -9,12 +9,13 @@ import com.example.demo.repository.BookRepository;
 import com.example.demo.service.IBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class BookService implements IBookService {
+public class BookService implements IBookService, ApplicationEventPublisherAware {
     @Autowired
     private BookRepository bookRepository;
 
@@ -71,6 +72,11 @@ public class BookService implements IBookService {
     public User getUserByBookId(Integer id) {
         Book book = bookRepository.getById(id);
         return book.getUser();
+    }
+
+    @Override
+    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+        this.eventPublisher = applicationEventPublisher;
     }
 
 

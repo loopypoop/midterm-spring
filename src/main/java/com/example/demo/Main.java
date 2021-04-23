@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.config.SpringConfig;
+//import com.example.demo.config.SpringConfig;
 import com.example.demo.controller.AuthorController;
 import com.example.demo.controller.BookController;
 import com.example.demo.controller.UserController;
@@ -11,10 +11,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Main {
     public static void main(String[] args) {
-        BookShopSystem bookShopSystem = new BookShopSystem();
+//        BookShopSystem bookShopSystem = new BookShopSystem();
 
 //        bookShopSystem.create();
-        bookShopSystem.menu();
+
+//        bookShopSystem.menu();
 
 //        Author author = new Author();
 //        author.setId(1);
