@@ -15,10 +15,10 @@ public class AuthController {
     @PostMapping(value = "/auth")
     public User login(@RequestBody User user) {
 
-//        User currentUser = iUserService.login(user);
-//        System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
+        User currentUser = iUserService.login(user);
+        System.out.println("authentication - " + SecurityContextHolder.getContext().getAuthentication().getName());
 
-        return null;
+        return currentUser;
     }
 
 //    @RequestMapping(value = "/signup", method = RequestMethod.POST, produces = "application/json")

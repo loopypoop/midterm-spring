@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.User;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,6 +18,9 @@ public class UserController {
     @Autowired
     IUserService iUserService;
 
+    @Autowired
+    UserRepository userRepository;
+
     @PostMapping(value = "/create")
     public User createUser(@RequestBody User user) {
         return iUserService.create(user);
@@ -25,6 +29,11 @@ public class UserController {
     @GetMapping(value = "/read/{id}")
     public User getById(@PathVariable Integer id) {
         return iUserService.getById(id);
+    }
+
+    @GetMapping(value = "/read/username/{username}")
+    public User getByUsername(@PathVariable String username) {
+        return userRepository.getByUsername(username);
     }
 
     @GetMapping(value = "/read/all")

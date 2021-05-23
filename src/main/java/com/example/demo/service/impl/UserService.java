@@ -49,12 +49,12 @@ public class UserService implements IUserService, UserDetailsService {
 
     @Override
     public User login(User user) {
-//        User dbUser = userRepository.getByUsername(user.getUsername());
-//
-//        if (dbUser.getId() != null) {
-//            if (dbUser.getPassword().equals(user.getPassword()))
-//                return dbUser;
-//        }
+        User dbUser = userRepository.getByUsername(user.getUsername());
+
+        if (dbUser.getId() != null) {
+            if (dbUser.getPassword().equals(user.getPassword()))
+                return dbUser;
+        }
         return null;
     }
 
